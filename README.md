@@ -45,15 +45,15 @@ These are some snippets of PowerShell for the value elements in the XML file.
 ```
 <Value>return (Get-NetIPAddress -InterfaceAlias "Ethernet").IPAddress</Value>
 ```
-###
+### Operating System
 ```
 <Value>return (Get-CimInstance Win32_OperatingSystem).Caption.Replace("Microsoft","")</Value>
 ```
-###
+### Operating System Service Pack
 ```
 <Value>return (Get-CimInstance Win32_OperatingSystem).ServicePackMajorVersion+"."+(Get-CimInstance Win32_OperatingSystem).ServicePackMinorVersion</Value>
 ```
-###
+### System Manufacturer
 ```
 <Value>return (Get-CimInstance Win32_ComputerSystem).Manufacturer</Value>
 ```
