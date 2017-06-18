@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Information>
+  <!--Width of the generated information list-->
+  <Width>300</Width>
+  <!--Anchor for the information list. (Where is shows on the background)-->
+  <!--[Upper/Center/Lower]-[Right/Center/Left]-->
+  <Anchor>Upper-Right</Anchor>
+  <!--Which screen to show the information on-->
+  <!--All, Primary-->
+  <Screen>Primary</Screen>
+  <!--Offset offsets the list by the specified amount. You can use this to add a margin.-->
+  <!--[HorizontalShift VerticalShift]-->
+  <Offset>-20 10</Offset>
+  <Background>
+    <!--Background image location. Relative paths work and some variables do as well. Note that relative paths are relative to the context the script runs in.-->
+    <BaseImageLocation>C:\Wallpaper\Wallpaper.jpg</BaseImageLocation>
+    <!--How to present the background image.-->
+    <!--Tile, Center, Fill-->
+    <Positioning>Fill</Positioning>
+  </Background>
+  <!--Array of graphics tools that will be used. (Only brushes and fonts atm)-->
+  <GraphicsTools>
+    <!--Font tool-->
+    <Font>
+      <!--Name that this tool will be referenced by later in the XML file-->
+      <ReferenceName>Header</ReferenceName>
+      <!--Name of the font to use-->
+      <FontName>Ariel</FontName>
+      <!--Size to draw the font at-->
+      <FontSize>24</FontSize>
+      <!--Style to apply to the text.-->
+      <!--[Regular=0,Bold=1,Italic=2,Strikeout=8,Underline=4]-->
+      <!--Bit-Or the option to join them together. (Ex, Bold and Underlined = 1 -bor 4 = 5)-->
+      <FontStyle>4</FontStyle>
+    </Font>
+    <Font>
+      <ReferenceName>Name</ReferenceName>
+      <FontName>Ariel</FontName>
+      <FontSize>12</FontSize>
+      <FontStyle>1</FontStyle>
+    </Font>
+    <Font>
+      <ReferenceName>Value</ReferenceName>
+      <FontName>Ariel</FontName>
+      <FontSize>12</FontSize>
+      <FontStyle>0</FontStyle>
+    </Font>
+    <!--Brush tool-->
+    <Brush>
+      <!--Name that this tool will be referenced by later in the XML file-->
+      <ReferenceName>HeaderBrush</ReferenceName>
+      <!--Color of the brush-->
+      <!--[Reg Green Blue] or [Alpha Red Green Blue]. Seperate with spaces.-->
+      <Color>255 255 255</Color>
+    </Brush>
+    <Brush>
+      <!--This brush has the alpha set to 0. It will draw nothing. This can be paired with the divider to add room between elements if the automatic offsets aren't enough.-->
+      <ReferenceName>InvisBrush</ReferenceName>
+      <Color>0 0 0 0</Color>
+    </Brush>
+  </GraphicsTools>
+  <!--Array of items to draw on the background-->
+  <Items>
+    <!--Label is a centered bit of text. Good for section headers and such-->
+    <Label>
+      <!--The text to draw on the desktop. Note that this is powershell. You can call just about anything.-->
+      <!--For static text, just use [return "<some static text>"]-->
+      <Value>return $env:COMPUTERNAME</Value>
+      <!--Reference name of the font to use-->
+      <FontRefName>Header</FontRefName>
+      <!--Reference name of the brush to use-->
+      <BrushRefName>HeaderBrush</BrushRefName>
+    </Label>
+    <!--Adds a solid bar to the list of items.-->
+    <Divider>
+      <!--Height of the bar to draw-->
+      <Height>25</Height>
+      <!--Brush to use when drawing the bar-->
+      <BrushRefName>InvisBrush</BrushRefName>
+    </Divider>
+    <!--The list element draws a bunch of key value pairs. [Name: Value]-->
+    <!--Name is anchored to the left of the main list, value to the right, accross from it's name-->
+    <List>
+      <!--Font to use when drawing the names-->
+      <NameFontRefName>Name</NameFontRefName>
+      <!--Brush to use when drawing the names-->
+      <NameBrushRefName>HeaderBrush</NameBrushRefName>
+      <!--Font to use when drawing the values-->
+      <ValueFontRefName>Value</ValueFontRefName>
+      <!--Brush to use when drawing the values-->
+      <ValueBrushRefName>HeaderBrush</ValueBrushRefName>
+      <!--How the values should be justified-->
+      <!--[Left/Right]-->
+      <ValueJustification>Right</ValueJustification>
+      <!--Where the values should be anchored from, and an offset from that anchor to draw the values.-->
+      <!--If no offset amount is entered, it will either be flush against the right side, or flush against the names-->
+      <!--Note that when you do enter a value, it does not take the name into account. So setting "Left 0" will have the values over the names.-->
+      <!--[Left offsetfromside/Right offsetfromside]-->
+      <ValueOffset>Right</ValueOffset>
+      <!--ListItems are the items to actually draw in the list.-->
+      <ListItem>
+        <!--Name of the value to draw-->
+        <ItemName>Test</ItemName>
+        <!--The value to draw. Note that this is powershell.-->
+        <Value>return "Good"</Value>
+      </ListItem>
+      <ListItem>
+        <ItemName>Second Test</ItemName>
+        <Value>return "Good too"</Value>
+      </ListItem>
+      <ListItem>
+        <ItemName>UserName</ItemName>
+        <Value>return ($env:USERDOMAIN+"\"+$env:USERNAME)</Value>
+      </ListItem>
+    </List>
+    <!--Image allows you to draw an image in the list of information-->
+    <Image>
+      <!--Path to the image to draw. Note that the path can be relative, but is relative to the context the script runs in.-->
+      <Path>C:\Images\SomeImage.jpg</Path>
+      <!--Width is the desired width of the image-->
+      <!--Use a number or "Auto"-->
+      <Width>Auto</Width>
+      <!--Height is the desired width of the image-->
+      <!--Use a number or "Auto"-->
+      <Height>Auto</Height>
+      <!--Note: These sizes will be changed by the script under certain conditions. If the width is larger than the main lists width, then it will be edited to the list width to prevent overflow. Height is mostly unrestricted.-->
+    </Image>
+  </Items>
+</Information>
