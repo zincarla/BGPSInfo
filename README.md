@@ -19,7 +19,7 @@ BGPSInfo.ps1 -BaseImageLocation <Path to base image> -SavePath <Full path to sav
 ```
 Example:
 ```
-&"C:\Scripts\Get-Hash.ps1" -InformationFile "C:\AnswerFile.xml"
+&"BGPSInfo.ps1" -BaseImageLocation "C:\Pictures\Wallpaper.jpg" -SavePath "C:\Users\Public\wallpaper.jpg"
 ```
 ## Notes
 -This script will not update resolution and monitor information if you re-run the script in the same session. If you run the script in a PowerShell session, change your resolution, then re-run the script, it will generate the background incorrectly. You must start the script in another session. This is not normally an issue in real-world scenarios as you are more than likely going to use a method to trigger the script which will run it in a new session every time. This is only relevant when testing the script.
